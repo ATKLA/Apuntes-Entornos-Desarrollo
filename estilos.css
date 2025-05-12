@@ -1,0 +1,194 @@
+:root {
+  --color-primario: #8301ab;
+  --color-secundario: #f7de42;
+  --color-fondo: #fbd428;
+  --color-texto: #1e293b;
+  --color-borde: #030406;
+  --color-destacado: #e63946;
+}
+
+/* Estilos base */
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  color: var(--color-texto);
+  background-color: var(--color-fondo);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+h1 {
+  text-align: center;
+  color: var(--color-primario);
+  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
+}
+
+.header-divider {
+  border: 2px solid var(--color-primario);
+  margin: 1.5rem 0;
+  opacity: 0.7;
+}
+
+/* imagen */
+
+.scaled {
+    transform: scale(0.95); /* Reduce al 50% */
+    transform-origin: top left; /* Punto de origen de la transformación */
+    margin:38px;
+}
+
+
+/* Contenedores de código */
+.code-container {
+  margin: 2rem 0;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  background: white;
+  display: inline-block; /* Ajuste automático al contenido */
+}
+
+.code-container img {
+  
+  max-width: 100%; /* Responsive */
+}
+
+.code-header {
+  background-color: var(--color-primario);
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem 0.5rem 0 0;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.code-header h2 {
+  margin: 0;
+  color: white;
+  background: transparent;
+  border-left: none;
+  padding: 0;
+  font-size: inherit;
+}
+
+/* Bloques de código */
+pre[class*="language-"] {
+  margin: 0 !important;
+  border-radius: 0 0 0 0 !important;
+  background: #f5f7fa !important;
+  border: 1px solid var(--color-borde) !important;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+code[class*="language-"] {
+  display: block;
+  padding: 1.5rem !important;
+  font-family: 'Fira Code', monospace !important;
+  font-size: 0.95rem !important;
+  line-height: 1.5 !important;
+  background: transparent !important;
+}
+
+/* Tabla del glosario */
+.table-container {
+  padding: 1.5rem;
+  overflow-x: auto;
+}
+
+.glossary-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  margin: 0;
+}
+
+.glossary-table td {
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  vertical-align: top;
+}
+
+.glossary-table tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+.glossary-table strong {
+  color: var(--color-primario);
+}
+
+.glossary-table input,
+.glossary-table select,
+.glossary-table button {
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+/* Footer */
+.page-footer {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 1.5rem;
+  color: var(--color-texto);
+  border-top: 2px solid var(--color-primario);
+  font-size: 0.9rem;
+  background: white;
+  border-radius: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+  
+  .code-container {
+    margin: 1rem 0;
+  }
+  
+  pre[class*="language-"] {
+    padding: 1rem !important;
+  }
+  
+  .glossary-table td {
+    padding: 8px;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .glossary-table tr {
+    margin-bottom: 1rem;
+    display: block;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+}
+
+/* Mejoras para el resaltado de sintaxis */
+.token.comment,
+.token.prolog {
+  color: #64748b !important;
+  font-style: italic !important;
+}
+
+.token.tag {
+  color: #2563eb !important;
+}
+
+.token.attr-name {
+  color: #059669 !important;
+}
+
+.token.attr-value {
+  color: #d97706 !important;
+}
+
+.token.punctuation {
+  color: #94a3b8 !important;
+}

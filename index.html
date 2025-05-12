@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Apuntes de entornos de desarrollo</title>
+    <meta name="description" content="Apuntes de la asignatura de entornos de daw">
+    <meta name="keywords" content="uax, fp online uax, uax online, apuntes, entornos de desarrollo">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+    <link rel="stylesheet" href="estilos.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-html.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <h1>Apuntes de Entornos de desarrollo</h1>
+    <hr class="header-divider">
+    <br>
+
+    <!-- Ejemplo UML -->
+    <section class="code-container">
+        <div class="code-header">
+            <h2>Ejemplo UML Diagrama de clases</h2>
+        </div>
+        <img src="uml.jpg" alt="UML" class="scaled">
+    </section>
+
+    <!-- Ejemplo Ejercicios Python -->
+    <section class="code-container">
+        <div class="code-header">
+            <h2>Ejercicios en Python</h2>
+        </div>
+        <p style="margin:25px;"><strong>Input, Output y Variables</strong><br>
+            Enunciado:<br>
+            1. Pide al usuario que introduzca su nombre y su altura en centímetros.<br>
+            2. Imprime un mensaje en el siguiente formato:<br>
+            "Hola [nombre], mides [altura] cm"<br>
+            3. Convierte la altura a metros (1 metro = 100 cm) y vuelve a imprimir un mensaje en el siguiente
+            formato:<br>
+            "Hola [nombre], mides [altura_en_metros] metros"</p>
+        <pre><code class="language-python">def ejercicio1():
+    nombre = input("Ingrese su nombre: ")
+    altura_cm = input("Ingrese su altura: ")
+
+    print(f"Hola {nombre}, mides {altura_cm} cm")
+
+    try:
+        altura_cm_float = float(altura_cm)
+        altura_m = altura_cm_float / 100
+        print(f"Hola {nombre}, mides {altura_m} metros")
+    except ValueError:
+        print("El valor introducido no es válido")
+
+if __name__ == "__main__":
+    ejercicio1()</code></pre>
+        <p style="margin:25px;"><strong>Calculadora</strong><br>
+            Enunciado:<br>
+            1.Crea un programa que pida al usuario dos números enteros.<br>
+            2.Muestra la multiplicación y la división entre ellos.<br>
+            3.Si el divisor (segundo número) es 0, muestra un mensaje que indique que la división no
+            es posible.</p>
+        <pre><code class="language-python">def ejercicio2():
+    num1 = input("Introduce el primer número: ")
+    num2 = input("Introduce el segundo número: ")
+
+    try:
+        num1 = int(num1)
+        num2 = int(num2)
+
+        # Multiplicación (siempre válida)
+        print(f"Multiplicación: {num1} * {num2} = {num1 * num2}")
+
+        # División (solo si num2 no es cero)
+        if num2 == 0:
+            print("No se puede dividir entre 0")
+        else:
+            print(f"División: {num1} / {num2} = {num1 / num2}")
+
+    except ValueError:
+        print("Error: Los valores introducidos no son válidos")
+
+if __name__ == "__main__":
+    ejercicio2()</code></pre>
+        <p style="margin:25px;"><strong>Condicionales (if, elif, else)</strong><br>
+            Enunciado:<br>
+            1.Pide al usuario que introduzca una nota en una escala de 0 a 10.<br>
+            2.Según la nota, muestra:<br>
+            - Menor que 5: "Suspendido"<br>
+            - Entre 5 y 6 (inclusive 5 y menor o igual a 6): "Aprobado"<br>
+            - Entre 7 y 8: "Notable"<br>
+            - Mayor que 8 hasta 10: "Sobresaliente".<br>
+            3.Si la nota es menor que 0 o mayor que 10, muestra un mensaje indicando que la nota
+            está fuera de rango.</p>
+        <pre><code class="language-python">def ejercicio3():
+    nota = input("Introduce una nota del 0 al 10: ")
+
+    try:
+        nota = float(nota)  # Usamos float para admitir decimales
+        if nota < 0 or nota > 10:
+            print("Error, nota fuera de rango")
+        elif nota < 5:
+            print("Suspendido")
+        elif nota < 7:  # Ya sabemos que es >= 5 por el elif anterior
+            print("Aprobado")
+        elif nota < 9:  # Ya sabemos que es >= 7
+            print("Notable")
+        else:  # Solo queda >= 8 y <= 10 (por el primer if)
+            print("Sobresaliente")
+    except ValueError:
+        print("Error, introduce un número válido")
+
+if __name__ == "__main__":
+    ejercicio3()</code></pre>
+        <p style="margin:25px;"><strong>Bucles FOR</strong><br>
+            Enunciado:<br>
+            1.Crea una lista de 5 números, por ejemplo: [5, 2, 7, 1, 9].<br>
+            2.Utilizando un bucle for, recorre la lista y calcula la suma total de los elementos.<br>
+            3.Imprime el resultado de la suma.</p>
+        <pre><code class="language-python">def ejercicio4():
+    numeros = [5,2,7,1,9]
+    suma = 0
+    for num in numeros:
+        suma += num
+    print(f"La suma total de los numeros es de: {suma}")
+
+if __name__ == "__main__":
+    ejercicio4()</code></pre>
+        <p style="margin:25px;"><strong>Bucles WHILE</strong><br>
+            Enunciado:<br>
+            1.Utiliza un bucle while para pedir al usuario que introduzca números.<br>
+            2.El programa deberá seguir pidiendo números mientras el número ingresado sea mayor o
+            igual a cero.<br>
+            3.Cuando el usuario introduzca un número negativo, el programa finaliza y muestra todos
+            los números introducidos (puedes mostrarlos en una lista).</p>
+        <pre><code class="language-python">def ejercicio5():
+    numeros_ingresados = []
+    try:
+        numero = int(input("Introduce un numero(para finalizar ingresa un numero negativo:"))
+        while numero >= 0:
+            numeros_ingresados.append(numero)
+            numero = int(input("Introduce un numero(para finalizar ingresa un numero negativo:"))
+    except ValueError:
+        print("No se puede introducir algo que no sea un número")
+    print(f"Números ingresados: {numeros_ingresados}")
+
+if __name__ == "__main__":
+    ejercicio5()</code></pre>
+        <p style="margin:25px;"><strong>Funciones, Variables Locales y Globales</strong><br>
+            Enunciado:<br>
+            1.Define una función llamada cuadrado que reciba un número y retorne el cuadrado de
+            ese número. Utiliza una variable local en la función.<br>
+            2.Declara una variable global llamada mensaje_global y escribe otra función que la
+            modifique.<br>
+            3.Muestra por pantalla el resultado de la función cuadrado y el valor de la variable global
+            tras la modificación.</p>
+        <pre><code class="language-python">def cuadrado(num):
+    resultado_local = num * num #variable local
+    return resultado_local
+
+# Variable global
+
+mensaje_global = "Valor inicial"
+
+def modificar_mensaje():
+    global mensaje_global
+    mensaje_global = "El mensaje ha sido modificado desde la funcion"
+
+def ejercicio6():
+    numero = 4
+    print(f"El cuadrado de {numero} es : {cuadrado(numero)}")
+    print(f"Antes de modificar: {mensaje_global}")
+    modificar_mensaje()
+    print(f"Despues de modificar: {mensaje_global}")
+
+if __name__ == "__main__":
+    ejercicio6()</code></pre>
+        <p style="margin:25px;"><strong>Funciones Lambda</strong><br>
+            Enunciado:<br>
+            1.Define una función lambda que reciba un número y lo multiplique por 10.<br>
+            2.Aplica esa lambda a cada elemento de la lista [1, 2, 3, 4, 5] para generar una nueva lista.<br>
+            3.Imprime la nueva lista resultante.</p>
+        <pre><code class="language-python">def ejercicio7():
+    multiplicar_por_diez = lambda x : x*10
+    numeros = [1,2,3,4,5]
+
+    nuevos_numeros = list(map(multiplicar_por_diez, numeros))
+
+    print(f"Lista original: {numeros}")
+    print(f"Lista multiplicada por 10: {nuevos_numeros}")
+
+if __name__ == "__main__":
+    ejercicio7()</code></pre>
+        <p style="margin:25px;"><strong>Recursividad (Factorial)</strong><br>
+            Enunciado:<br>
+            1.Define una función recursiva factorial(n) que calcule y retorne el factorial del número n.<br>
+            2.Recuerda que el factorial de 0 es 1 y para n > 0, se cumple que:<br>
+            factorial(n) = n * factorial(n - 1).<br>
+            3.Demuestra el funcionamiento de la función llamándola, por ejemplo, con n = 5.</p>
+        <pre><code class="language-python">def ejercicio8():
+    def factorial(n):
+        # Caso base: factorial de 0 es 1
+        if n == 0:
+            return 1
+        # Caso recursivo: n * factorial(n-1)
+        else:
+            return n * factorial(n - 1)
+
+    # Demostración del funcionamiento con n = 5
+    resultado = factorial(5)
+    print("El factorial de 5 es:", resultado)
+
+if __name__ == "__main__":
+    ejercicio8()</code></pre>
+        <p style="margin:25px;"><strong>Manejo de Errores (try/except)</strong><br>
+            Enunciado:<br>
+            1.Pide al usuario que introduzca un número entero.<br>
+            2.Divide 10 entre ese número.<br>
+            3.Utiliza bloques try/except para manejar:<br>
+            - El error al convertir el dato a entero.<br>
+            - El error de división por cero..<br>
+            4.Asegúrate de incluir un bloque finally que imprima un mensaje final, indicando que se
+            ha finalizado la operación.</p>
+        <pre><code class="language-python">def ejercicio9():
+    try:
+        entrada = input("Introduce un numero entero:")
+        numero = int(entrada)
+        resultado = 10 / numero
+        print(f"10 dividido entre {numero} es {resultado}")
+    except ZeroDivisionError:
+        print("Error: No se puede dividir entre 0.")
+    except ValueError:
+        print("Error: Debes introducir un numero entero valido.")
+    finally:
+        print("Fin del bloque try/except")
+
+if __name__ == "__main__":
+    ejercicio9()</code></pre>
+
+    </section>
+    <section class="code-container">
+        <div class="code-header">
+            <h2>POO en Python</h2>
+        </div>
+        <p style="margin:25px;"><strong>Reto 4</strong><br>
+            Enunciado:<br>
+            Se debe crear una clase llamada soldado, la cual debe tener un constructor con 3 atributos
+            (peso, altura y fuerza), todos ellos con valores numéricos enteros (int). El valor de fuerza se
+            debe inicializar con el valor 100.<br>
+            Posteriormente se crearan 2 métodos:</p>
+
+        <ul style="margin:25px;">
+            <li>Un método se llamará "perdida" y se encargará de quitar fuerza al soldado
+                según el valor que le marquemos. Debe indicar si el soldado se queda a cero de
+                fuerza y por lo tanto el personaje a "muerto"</li>
+            <li>Otro método se llamará "ganancia" y se encargará de darle más vida al
+                personaje (fuerza), pero nunca puede pasar de los 100 establecidos al principio</li>
+        </ul>
+
+        <p style="margin:25px;">Con esta clase debemos crear un objeto soldado y simular la pérdida o ganancia de fuerza
+            como si estuviera en un video juego y fuese herido o cogiese un objeto de energía. El ejemplo
+            será válido con la creación del objeto, una pérdida de fuerza y una ganancia</p>
+
+        <pre><code class="language-python">class Soldado:
+    def __init__(self, peso, altura, fuerza=100):
+        self.peso = int(peso)
+        self.altura = int(altura)
+        self.fuerza = int(fuerza)  # Corregido para usar el parámetro
+
+    def perdida(self, fuerza):
+        self.fuerza -= int(fuerza)
+        if self.fuerza <= 0:
+            self.fuerza = 0
+            print("El soldado ha muerto. Fin del juego.")
+
+    def ganancia(self, fuerza):
+        self.fuerza = min(100, self.fuerza + int(fuerza))
+
+Soldado1 = Soldado(100, 180)
+print("El soldado inicia la partida con: "+str(Soldado1.fuerza)+" de fuerza")
+Soldado1.perdida(10)
+print("El soldado ha sido herido. Fuerza actual: "+str(Soldado1.fuerza))
+Soldado1.ganancia(30)
+print("El soldado gana energia. Fuerza actual: "+str(Soldado1.fuerza))
+Soldado1.perdida(100)</code></pre>
+    </section>
+
+    <section class="code-container">
+        <div class="code-header">
+            <h2>GIT y GITHUB</h2>
+        </div>
+        <p style="margin:25px;"><strong>Comandos Git</strong><br>
+        <div class="table-container">
+            <table class="glossary-table">
+                <tr>
+                    <td><strong>git init:</strong>Inicializa un nuevo repositorio git local</td>
+                    <td><strong>git clone < url>:</strong>Descarga un repositorio remoto a local</td>
+                    <td><strong>git status:</strong>Muestra el estado de los archivos</td>
+                    <td><strong>git add < archivo>:</strong>Añade cambios a ese archivo</td>
+                </tr>
+                <tr>
+                    <td><strong>git commit -m "":</strong>Guarda los cambios con el mensaje</td>
+                    <td><strong>git push:</strong>Sube los commits al repositorio remoto</td>
+                    <td><strong>git pull:</strong>Descarga los últimos cambios del repositorio remoto y los fusiona con
+                        el local</td>
+                    <td><strong>git branch:</strong>Lista todas las ramas del repositorio</td>
+                </tr>
+                <tr>
+                    <td><strong>git branch < nombre>:</strong>Crea una nueva rama</td>
+                    <td><strong>git branch -d < nombre>:</strong>Elimina la rama</td>
+                    <td><strong>git checkout < rama>:</strong>Cambia a otra rama</td>
+                    <td><strong>git merge < rama>:</strong>Fusiona una rama con la rama actual</td>
+                </tr>
+                <tr>
+                    <td><strong>git diff:</strong>Muestra las diferencias entre archivos modificados y su última versión
+                        guardada</td>
+                    <td><strong>git remote -v:</strong>Muestra los repositorios remotos configurados</td>
+                    <td><strong>git reset < archivo>:</strong>Quita un archivo del área de staging</td>
+                    <td><strong>git rm < archivo>:</strong>Elimina un archivo del repositorio y del sistema de archivos
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>git fetch:</strong>Descarga cambios del repositorio remoto sin fusionarlos</td>
+                    <td><strong>git remote add < repo_name>
+                                < remote_url>:</strong>Crea una conexión entre el repositorio local y el remoto</td>
+                    <td><strong>git push --force origin main:</strong>Sobrescribe y empuja todo el local al remoto</td>
+                    <td><strong>git log:</strong>Muestra el historial de commits</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><strong>git clean:</strong>Elimina los archivos sin seguimiento del respositorio</td>
+                    <td><strong>git config:</strong>Configura las opciones de git</td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </section>
+    <section class="code-container">
+        <div class="code-header">
+            <h2>Streamlit</h2>
+        </div>
+        <p style="margin:25px;"><strong>Primeros pasos:</strong><br>
+        <ul style="margin:25px;">
+            <li>pip install streamlit. (En terminal)</li>
+            <li>import streamlit as st. (En el archivo .py)</li>
+            <li>streamlit run blablabla.py. (En terminal)</li>
+            <li>st.set_page_config(page_title="Nombre de tu pag", page_icon=":)", layout="wide")</li>
+        </ul>
+        <pre><code class="language-python">import streamlit as st
+import time
+
+#---CONFIGURACION INICIAL DE LA PAGINA---
+
+st.set_page_config(page_title="Demo de streamlit", page_icon=":)", layout="wide")
+
+#---ESCRITURA---
+
+st.title("Demo completa de los componentes de streamlit")
+st.header("Explorando los elementos básicos")
+
+#---ELEMENTOS DE TEXTO---
+
+st.subheader("Texto enriquecido")
+st.text("Esto es un texto simple")
+st.markdown("**Este texto esta en negrita** y este en ***cursiva***")
+st.code("print('Hola mundo')", language="python")
+
+#---WIDGETS----
+
+st.subheader("Widgets iterativos")
+if st.button("Haz click aqui:"):
+    st.success("¡Boton presionado!")
+
+opcion = st.selectbox("Selecciona una opcion", ["A", "B", "C"])
+st.write(f"Seleccionaste: {opcion}")
+
+ingredientes = st.multiselect(
+    "Selecciona tus ingredientes preferidos",
+    ["Avena", "Huevo", "Pollo", "Verduras"]
+)
+st.write(f"Seleccionaste: {ingredientes}")
+
+#---SLIDER---
+
+st.subheader("Slider")
+valor = st.slider("Selecciona un valor", 0, 100, 25)
+st.write(f"Valor seleccionado: {valor}")
+
+#---INPUT----
+
+st.subheader("Inputs")
+nombre = st.text_input("¿Como te llamas?")
+edad = st.text_input("¿Que edad tienes?")
+edad2 = st.number_input("¿Cual es tu edad?", min_value=1, max_value=120, step=1)
+st.write(f"Nombre: {nombre}, edad: {edad2}")
+
+#---ELEMENTOS MULTIMEDIA----
+
+st.subheader("Elementos multimedia")
+st.image("https://via.placeholder.com/300x150.png?text=Imagen+de+ejemplo", caption="Imagen de la web")
+st.audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3")
+st.video("https://www.w3schools.com/html/mov_bbb.mp4")
+
+#---ESTADOS---
+
+st.subheader("Estados")
+if "contador" not in st.session_state:
+    st.session_state.contador = 0
+
+incrementar = st.button("Incrementar contador")
+
+if incrementar:
+    st.session_state.contador += 1
+
+st.write(f"Contador: {st.session_state.contador}")
+
+#---BARRA DE PROGRESO---
+
+st.subheader("Barra de progreso")
+progreso = st.progress(0)
+for porcentaje in range(0,100,10):
+    time.sleep(0.5)
+    progreso.progress(porcentaje)
+
+#---DISEÑO Y CONTENEDORES---
+
+st.subheader("Diseños y contenedores")
+col1, col2 = st.columns(2)
+
+with col1:
+    st.info("Esta es la columna 1")
+with col2:
+    st.warning("Esta es la columna 2")
+with st.expander("Haz click para expandir"):
+    st.write("Aquí puedes ocultar o mostrar contenido")
+
+col3, col4 = st.columns(2)
+with col3:
+    st.info("Esta es la columna 1")
+with col4:
+    st.warning("Esta es la columna 2")</code></pre>
+        <div class="table-container">
+            <p><strong>Comandos Streamlit</strong></p><br>
+            <table class="glossary-table">
+                <tr>
+                    <td><strong>st.tittle:</strong>Crea un título</td>
+                    <td><strong>st.header:</strong>Un cabecero o h2</td>
+                    <td><strong>st.subheader:</strong>h3 aprox</td>
+                    <td><strong>st.text:</strong>como un p</td>
+                </tr>
+                <tr>
+                    <td><strong>st.markdown:</strong>Escribe texto markdown</td>
+                    <td><strong>st.code:</strong>Muestra el codigo</td>
+                    <td><strong>st.button:</strong>Crea un botón</td>
+                    <td><strong>st.succes:</strong>Mensaje de exito en verde</td>
+                </tr>
+                <tr>
+                    <td><strong>st.selectbox:</strong>Selector opciones</td>
+                    <td><strong>st.multiselect:</strong>Selector múltiple</td>
+                    <td><strong>st.slider:</strong>Barra de medida roja</td>
+                    <td><strong>st.text_input:</strong>Introduce un texto</td>
+                </tr>
+                <tr>
+                    <td><strong>st.number_input:</strong>Introduce un número</td>
+                    <td><strong>st.image:</strong>Introduce una imagen</td>
+                    <td><strong>st.audio:</strong>Introduce un audio</td>
+                    <td><strong>st.video:</strong>Introduce un video</td>
+                </tr>
+                <tr>
+                    <td><strong>st.progress:</strong>Barra de progeso azul</td>
+                    <td><strong>st.columns:</strong>Crea columnas</td>
+                    <td><strong>st.info:</strong>Texto informativo azul</td>
+                    <td><strong>st.warning:</strong>Texto informativo amarillo</td>
+                </tr>
+                <tr>
+                    <td><strong></strong></td>
+                    <td><strong>st.error:</strong>Texto informativo rojo</td>
+                    <td><strong>st.expander:</strong>Barra expansora que se puede ocultar</td>
+                    <td><strong></strong></td>
+                </tr>
+            </table>
+        </div>
+    </section>
+    <footer class="page-footer">
+        Apuntes de "Entornos de desarrollo" by ATKLA.
+    </footer>
+</body>
+
+</html>

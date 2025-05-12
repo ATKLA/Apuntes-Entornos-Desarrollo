@@ -47,7 +47,9 @@ h1 {
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   background: white;
-  display: inline-block; /* Ajuste automático al contenido */
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
 }
 
 .code-container img {
